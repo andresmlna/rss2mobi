@@ -3,9 +3,9 @@
 rss2mobi fetch RSS articles into a SQLite database every hour, using populate_db.py. Using articles2mobi.py downloads all URLs stored and converts to .mobi format for Amazon Kindle. 
 
 
-Optional, you can create a .html file for audit all .mobi files generated.
+**Optional, you can create a .html file for audit all .mobi files generated.**
 
-![](https://i.imgur.com/ZXl7pyQ.png)
+![.mobi files website](https://i.imgur.com/ZXl7pyQ.png)
 
 ---
 
