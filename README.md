@@ -4,7 +4,8 @@ rss2mobi fetch RSS articles into a SQLite database every hour, using populate_db
 
 
 Optional, you can create a .html file for audit all .mobi files generated.
-![Alt text](https://imgur.com/a/tUHJc ".html website with all .mobi files generated.")
+
+![](https://i.imgur.com/ZXl7pyQ.png)
 
 ---
 
