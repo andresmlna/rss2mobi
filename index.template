@@ -1,0 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+        <title>Diarios de Chile para Amazon Kinlde</title>
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+    </head>
+    <body>
+        <div id="con">
+            <div id="header">
+                <h1>Lorem Ipsum</h1>
+                <span id="sub_header">Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...</span>
+            </div>
+            <div id="content">
+                <div>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In at nibh vitae turpis tempor fringilla. Pellentesque ut sapien condimentum nibh porta faucibus. Ut vel lacus lectus. Curabitur eleifend porttitor erat id eleifend. Donec sit amet nulla odio. Proin viverra dolor vitae massa tempus, at ultricies tellus ultrices. Fusce mattis scelerisque ultricies. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas aliquet ut ante a luctus.</p>
+                    <p><b>EDonec pretium ligula ac orci convallis porttitor. Quisque vel ligula fermentum, accumsan neque et, suscipit dui. Vestibulum semper, libero ut ultricies auctor, velit massa bibendum erat, sed lacinia odio tortor ac ante. In at neque ac odio consectetur eleifend eget sed turpis. Suspendisse gravida urna eget lorem lacinia consequat. Fusce enim justo, condimentum eu suscipit pretium, consectetur eu magna.</b></p>
+                </div>
+                <div id="square-note">
+                    <p id="text-note">Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse potenti. Vestibulum vitae justo at turpis hendrerit vehicula. Nunc tincidunt ante vel vulputate aliquam. Nulla lacinia tellus sapien, sit amet ornare sapien varius id. Duis id fringilla arcu. Donec nisi magna, tristique eget leo vitae, consectetur luctus lacus. Praesent tincidunt diam massa, a dignissim ipsum congue quis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aenean vel pretium metus.</p>
+                </div>
+                <div>
+                    <br>
+                    <table>
+                        <tr>
+                            <td>
+                                <ul>
+                                    {0}
+                                </ul>
+                            </td>
+                            <td>
+                            	<ul>
+                                    {1}
+                        		</ul>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <br>
+            <br>
+            <div id="footer">
+                <div id="copyright-note">
+                    <p><b>Nullam facilisis justo a velit posuere semper. Donec sed posuere mi, vitae hendrerit arcu.</b></p>
+                </div>
+                <div id="source_code-note">
+                    <P>Aenean ut ornare lacus. Quisque blandit quis nisl vitae pretium.</a></p>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

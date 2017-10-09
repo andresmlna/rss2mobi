@@ -1,0 +1,28 @@
+{
+  "images": {
+    "cover": "bbc_mundo_cover_600.jpg",
+    "masthead": "bbc_mundo_masthead.jpg"
+  },
+  "metadata": {
+    "title": "BBC Mundo",
+    "creator": "BBC Mundo",
+    "publisher": "Andrés Molina",
+    "subject": "Periodical",
+    "description": "BBC Mundo",
+    "filename": "bbc_mundo"
+  },
+  "feeds": [
+    {
+      "section": "Portada",
+      "url": "http://feeds.bbci.co.uk/mundo/rss.xml"
+    },
+    {
+      "section": "América Latina",
+      "url": "http://feeds.bbci.co.uk/mundo/america_latina/rss.xml"
+    },
+    {
+      "section": "Internacional",
+      "url": "http://feeds.bbci.co.uk/mundo/internacional/rss.xml"
+    }
+  ]
+}
