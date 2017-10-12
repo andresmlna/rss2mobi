@@ -97,35 +97,30 @@ def create_table(table_name):
             conn.close()
 
 
-# Insert a new row on determined table.
-# table_name - string - Name of the table.
-# data - list - Data for row to insert.
-def insert_row(table_name, data):
+# Get rows for a determinate newspaper section.
+# table_name  - string - Name of the table.
+# section - string -  Name of the newspaper section.
+def rows_table(table_name):
     conn = None
     table_name = remove_unsupported_chars(table_name).lower()
-    table_name = (table_name,)
 
     try:
-        conn = sqlite3.connect(constants.SQLITE_PATH + '/' + constants.SQLITE_FILE,  detect_types=sqlite3.PARSE_DECLTYPES | sqlite3.PARSE_COLNAMES)
+        conn = sqlite3.connect(constants.SQLITE_PATH + '/' + constants.SQLITE_FILE, detect_types=sqlite3.PARSE_DECLTYPES | sqlite3.PARSE_COLNAMES)
 
         with conn:
             cur = conn.cursor()
-            cur.execute('''INSERT INTO {0} (section, title, url, timestamp) VALUES (?, ?, ?, (SELECT strftime('%s','now')));'''.format(table_name[0]), (data[0], data[1], data[2]))
-            conn.commit()
+            cur.execute('SELECT * FROM {0};'.format(table_name))
 
-            # Print date, time and inserted row information.
-            print(time.strftime("%H:%M:%S %z ") + ' - '.join(data))
-
-            return True
+            rows = cur.fetchall()
+            return rows
 
     except sqlite3.Error as e_sql:
         print(e_sql)
         print('Error on SQLite.')
-        return False
+        return None
     except Exception as e:
         print(e)
         print('General exception.')
-        return False
     finally:
         if conn:
             conn.close()
@@ -159,3 +154,38 @@ def rows_by_section(table_name, section):
     finally:
         if conn:
             conn.close()
+
+
+# Insert a new row on determined table.
+# table_name - string - Name of the table.
+# data - list - Data for row to insert.
+def insert_row(table_name, data):
+    conn = None
+    table_name = remove_unsupported_chars(table_name).lower()
+    table_name = (table_name,)
+
+    try:
+        conn = sqlite3.connect(constants.SQLITE_PATH + '/' + constants.SQLITE_FILE,  detect_types=sqlite3.PARSE_DECLTYPES | sqlite3.PARSE_COLNAMES)
+
+        with conn:
+            cur = conn.cursor()
+            cur.execute('''INSERT INTO {0} (section, title, url, timestamp) VALUES (?, ?, ?, (SELECT strftime('%s','now')));'''.format(table_name[0]), (data[0], data[1], data[2]))
+            conn.commit()
+
+            # Print date, time and inserted row information.
+            print(time.strftime("%H:%M:%S %z ") + ' - '.join(data))
+
+            return True
+
+    except sqlite3.Error as e_sql:
+        print(e_sql)
+        print('Error on SQLite.')
+        return False
+    except Exception as e:
+        print(e)
+        print('General exception.')
+        return False
+    finally:
+        if conn:
+            conn.close()
+

@@ -37,6 +37,9 @@ def get_urls(url):
 
 # Controls the tasks for handling RSS URLs.
 def store_rss():
+    # Variable for store all URLs from RSS feed.
+    urls_feed = []
+
     # Get a list of *.json files.
     for file_feed in utils.get_json(constants.JSON_PATH):
         # Open *.json file.
@@ -52,7 +55,8 @@ def store_rss():
         # Loop for each RSS feed on *.json file.
         for feed in news_data['feeds']:
             # Variable for store all URL of newspaper section on SQLite database.
-            urls_feed = []
+            urls_table = []
+
             # Check if newspaper table exists on SQLite database.
             if utils.check_table(news_data['metadata']['title']) is False:
                 # Create table SQLite database.
@@ -61,18 +65,22 @@ def store_rss():
                     continue
             else:
                 # Gets a list with newspaper section information of SQLite database table.
-                rows_section = utils.rows_by_section(news_data['metadata']['title'], feed['section'])
-                for article_db in rows_section:
-                    # Only URL of newspaper section.
-                    urls_feed.append(article_db[1])
+                newspaper_rows = utils.rows_table(news_data['metadata']['title'])
+                for article_db in newspaper_rows:
+                    # Only URL of newspaper.
+                    urls_table.append(article_db[3])
 
             if utils.check_table(news_data['metadata']['title']) is True:
                 # Gets newspaper articles list for RSS feed.
                 article_list = get_urls(feed['url'])
+
+                for article in article_list:
+                    urls_feed.append(article['url'])
+
                 # For each article.
                 for article in article_list:
                     # Checks if a article URL no exists on list URL of SQLite database newspaper table.
-                    if article['url'] not in urls_feed:
+                    if article['url'] not in urls_table or article['url'] not in urls_feed:
                         # Insert article data on SQLite database newspaper table.
                         inserted = utils.insert_row(news_data['metadata']['title'], data=[feed['section'], article['title'], article['url']])
                         if inserted is False:
