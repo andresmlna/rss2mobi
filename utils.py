@@ -1,6 +1,5 @@
 import os
 import glob
-import time
 import sqlite3
 import constants
 
@@ -139,7 +138,7 @@ def rows_by_section(table_name, section):
 
         with conn:
             cur = conn.cursor()
-            cur.execute('SELECT title, url FROM {0} WHERE section = ?;'.format(table_name), section)
+            cur.execute('SELECT title, url FROM {0} WHERE section = ? ORDER BY id DESC;'.format(table_name), section)
 
             rows = cur.fetchall()
             return rows
@@ -171,9 +170,6 @@ def insert_row(table_name, data):
             cur = conn.cursor()
             cur.execute('''INSERT INTO {0} (section, title, url, timestamp) VALUES (?, ?, ?, (SELECT strftime('%s','now')));'''.format(table_name[0]), (data[0], data[1], data[2]))
             conn.commit()
-
-            # Print date, time and inserted row information.
-            print(time.strftime("%H:%M:%S %z ") + ' - '.join(data))
 
             return True
 

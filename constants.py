@@ -1,6 +1,8 @@
 import os
+import time
 from datetime import datetime, timedelta
 
+TIME = time.strftime("%H:%M:%S %z")
 TODAY = datetime.today().strftime('%Y-%m-%d')
 YESTERDAY = (datetime.today() - timedelta(days=1)).strftime('%Y-%m-%d')
 CURRENT_PATH = os.path.dirname(os.path.realpath(__file__))

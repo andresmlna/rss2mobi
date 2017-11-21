@@ -37,9 +37,6 @@ def get_urls(url):
 
 # Controls the tasks for handling RSS URLs.
 def store_rss():
-    # Variable for store all URLs from RSS feed.
-    urls_feed = []
-
     # Get a list of *.json files.
     for file_feed in utils.get_json(constants.JSON_PATH):
         # Open *.json file.
@@ -74,20 +71,19 @@ def store_rss():
                 # Gets newspaper articles list for RSS feed.
                 article_list = get_urls(feed['url'])
 
-                for article in article_list:
-                    urls_feed.append(article['url'])
-
                 # For each article.
                 for article in article_list:
                     # Checks if a article URL no exists on list URL of SQLite database newspaper table.
-                    if article['url'] not in urls_table or article['url'] not in urls_feed:
+                    if article['url'] not in urls_table:
                         # Insert article data on SQLite database newspaper table.
                         inserted = utils.insert_row(news_data['metadata']['title'], data=[feed['section'], article['title'], article['url']])
                         if inserted is False:
                             continue
+                        # Print date, time and inserted row information.
+                        print('{0} {1} - {2} {3}'.format(constants.TIME, feed['section'], article['title'], article['url']))
 
                 # Print article information for logs purposes.
-                print('{0}, {1} OK\n'.format(news_data['metadata']['title'], feed['section']).upper())
+                print('{0} {1} OK\n'.format(news_data['metadata']['title'], feed['section']).upper())
 
 
 def main():

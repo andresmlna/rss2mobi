@@ -76,7 +76,7 @@ def set_content(urls):
                         "title": article.title
                     })
                 # Print date and URL.
-                print(str(time.strftime("%H:%M:%S %z") + ' - ' + article.url))
+                print(constants.TIME + ' ' + article.url)
 
         except Exception as e:
             print(e)
