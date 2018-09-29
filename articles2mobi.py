@@ -3,6 +3,7 @@ import glob
 import json
 import time
 import utils
+import shutil
 import sqlite3
 import datetime
 import constants
@@ -140,7 +141,7 @@ def move_mobi(path, target_path):
         mobi_name = mobi_path.split('/')
         mobi_name = mobi_name[-1]
 
-        os.rename(path + '/' + mobi_name, target_path + '/' + mobi_name)
+        shutil.move(path + '/' + mobi_name, target_path + '/' + mobi_name)
 
 
 # Write *.mobi file using kindle-periodical (kp3) library.
@@ -238,7 +239,6 @@ def main():
 
     # Optional, for generating *.html with *.mobi file names.
     # make_html(news_items)
-
     delete_old_mobi(constants.WEB_PATH)
     move_mobi(constants.TEMP_PATH, constants.WEB_PATH)
 
