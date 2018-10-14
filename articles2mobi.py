@@ -238,7 +238,9 @@ def main():
     articles2mobi(constants.JSON_PATH)
 
     # Optional, for generating *.html with *.mobi file names.
-    # make_html(news_items)
+    if constants.WEB_PATH is not None:
+        make_html(news_items)
+
     delete_old_mobi(constants.WEB_PATH)
     move_mobi(constants.TEMP_PATH, constants.WEB_PATH)
 

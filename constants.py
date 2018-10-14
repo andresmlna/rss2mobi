@@ -12,12 +12,12 @@ JSON_PATH = CURRENT_PATH + '/rss_recipes'
 
 # Optional, for generating .html file with all .mobi files generated.
 # Example: /var/html/www
-WEB_PATH = ''
+WEB_PATH = None
 
 # Folder with temp files.
 # Example: /tmp/rss2mobi
-TEMP_PATH = ''
+TEMP_PATH = None
 
 # Folder with kindlegen binary
 # /bin
-KINDLEGEN_PATH = ''
+KINDLEGEN_PATH = None
